@@ -77,7 +77,7 @@ router.post('/createproduct', authenticateToken, async (req, res) => {
     }
 });
 
-router.get('/getproducts', authenticateToken, async (req, res) => {
+router.get('/getproducts', async (req, res) => {
     try {
         const productsList = await product.find({});
         res.status(Enums.HTTP_CODES.OK).json({ message: 'Ürünler başarıyla alındı!', items: productsList });
