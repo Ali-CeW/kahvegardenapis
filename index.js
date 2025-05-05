@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const PORT = 3001;
-const connectDB = require('./Database/connection'); 
+const connectDB = require('./Database/connection');
+const cors = require('cors'); 
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -10,8 +11,11 @@ if (!process.env.JWT_SECRET) {
 	process.exit(1);
   }
 // Middleware
+app.use(cors());
 app.use(express.json());
-
+app.use(cors({
+	origin: 'https://games.alicemyilmaz.tech', // Frontend URL'si
+  }));
 
 // MongoDB bağlantısı
 connectDB();
