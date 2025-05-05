@@ -12,7 +12,7 @@ const fileUpload = require('express-fileupload'); // File upload middleware
 router.use(express.json());
 router.use(fileUpload({
     useTempFiles: true, // Enable temporary file storage
-    tempFileDir: '/temp/' // Specify a directory for temporary files
+    tempFileDir: '/tmp/' // Specify a directory for temporary files
 }));
 
 router.post('/createproduct', authenticateToken, async (req, res) => {
